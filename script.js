@@ -45,14 +45,31 @@
 
 // Initialise an empty array with the variable name todoItems
 
+let todoItems = [];
+
+
 // Function to add a todo to the list
 // It should accept a string as a parameter (text of the todo item)
 // and it should add a new todo item to the todoItems array
 // the function does not need to return anything
 function addToDoItem(text) {
-  // Implement the logic to add a task here
+ 
+  if (typeof text == "string") {
+    console.log("thankyou for inputing a string");
+    let isCompleted = false;
+      let ID = todoItems.length + 1;
 
-  console.log("NOT YET IMPLEMENTED"); // Remove this line when you start working on the function
+      let Obj = {id : ID,text : text, completed : isCompleted};
+      todoItems.push(Obj);
+      console.log(todoItems);
+  }
+
+  else {
+    console.log("Please input a string");
+  }
+  
+  
+  
 }
 
 // Function to remove a todo to the list
@@ -61,9 +78,36 @@ function addToDoItem(text) {
 // that matches the id passed to the function, remove it from the array
 // the function does not need to return anything
 function removeToDoItem(todoId) {
-  // Implement the logic to add a task here
 
-  console.log("NOT YET IMPLEMENTED"); // Remove this line when you start working on the function
+
+
+  if (Number.isInteger(todoId)) {
+
+
+    let newArray = [];
+    let term = todoItems[todoId-1]
+    for (let i = 0 ; i < todoItems.length ; i++) {
+      if (todoItems[i] == term) {
+        console.log("removed")
+        todoItems[i].text = null;
+      }
+      else {
+        newArray.push(todoItems[i])
+        console.log(newArray)
+      }
+    }
+    
+    todoItems = newArray
+  
+  }
+  else {
+    console.log("Please use a number");
+  }
+  
+
+
+
+
 }
 
 // Function to mark a task as completed
@@ -74,7 +118,24 @@ function removeToDoItem(todoId) {
 function markToDoItemAsCompleted(todoId) {
   // Implement the logic to mark a task as completed here
 
-  console.log("NOT YET IMPLEMENTED"); // Remove this line when you start working on the function
+
+  if (Number.isInteger) {
+
+    console.log(todoItems[0].id)
+
+    for (i = 0 ; i < todoItems.length ; i++) {
+      if (todoItems[i].id == todoId) {
+        todoItems[i].completed = true;
+      }
+    }
+  }
+
+  else {
+    console.log("Please use a number");
+  }
+
+
+
 }
 
 // Function to delete a task from the array
@@ -86,7 +147,31 @@ function markToDoItemAsCompleted(todoId) {
 function deleteToDoItem(todoId) {
   // Implement the logic to remove a task here
 
-  console.log("NOT YET IMPLEMENTED"); // Remove this line when you start working on the function
+
+
+  if (Number.isInteger(todoId)) {
+
+    console.log("removed")
+    let newArray = [];
+    let term = todoItems[todoId]
+    for (let i = 0 ; i < todoItems.length ; i++) {
+      if (todoItems[i] == term) {
+        console.log("removed")
+      }
+      else {
+        newArray.push(todoItems[i])
+        console.log(newArray)
+      }
+    }
+    
+    todoItems = newArray
+  
+  }
+  else {
+    console.log("Please use a number");
+  }
+
+
 }
 
 // Function to clear all completed tasks
@@ -95,8 +180,40 @@ function deleteToDoItem(todoId) {
 function clearCompletedTasks() {
   // Implement the logic to clear completed tasks here
 
-  console.log("NOT YET IMPLEMENTED"); // Remove this line when you start working on the function
+
+
+  if (Number.isInteger) {
+
+    console.log(todoItems[0].id)
+    let bigArray = [];
+
+    for (i = 0 ; i < todoItems.length ; i++) {
+      if (todoItems[i].completed == true) {
+        console.log("fuck yeah");
+        
+      } 
+      else {
+        bigArray[i] = todoItems[i];
+      }
+    }
+    todoItems = bigArray;
+  }
+
+  else {
+    console.log("Please use a number");
+  }
+
+
+
 }
+
+
+
+
+
+
+
+
 
 // You can write your own tests here if you would like to test
 // your code before using the automated tests
