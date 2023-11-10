@@ -46,22 +46,43 @@
 // Initialise an empty array with the variable name todoItems
 
 let todoItems = [];
-
+const d = new Date();
+let ID = (d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds());
 
 // Function to add a todo to the list
 // It should accept a string as a parameter (text of the todo item)
 // and it should add a new todo item to the todoItems array
 // the function does not need to return anything
 function addToDoItem(text) {
- 
+  
+
+
   if (typeof text == "string") {
     console.log("thankyou for inputing a string");
+  
     let isCompleted = false;
-      let ID = todoItems.length + 1;
+      
 
-      let Obj = {id : ID,text : text, completed : isCompleted};
-      todoItems.push(Obj);
-      console.log(todoItems);
+
+    let ID = Math.floor(Math.random()*999);
+      for (let i = 0 ; i < todoItems.length ; i++) {
+        if (todoItems[i].id == ID) {
+          ID = Math.floor(Math.random()*999);
+          x = 1;
+        }
+  
+        else {
+          x = 0;
+        }
+      }
+    
+
+    
+
+    let Obj = {id : ID,text : text, completed : isCompleted};
+    
+    todoItems.push(Obj);
+    console.log(todoItems);
   }
 
   else {
@@ -79,9 +100,35 @@ function addToDoItem(text) {
 // the function does not need to return anything
 function removeToDoItem(todoId) {
 
+  if (Number.isInteger(todoId)) {
+    if (todoId > 0) {
+      console.log("good ID");
+      let newArray = [];
+      for (let i = 0 ; i < todoItems.length ; i++) {
+        if (todoItems[i].id == todoId) {
+          //todoItems[i].text = null; 
+          console.log("removed");
+        }
+        else {
+          newArray.push(todoItems[i]);
+        }
+        
+      }
+      todoItems = newArray;
 
+    }
+    
+  } 
+  else {
+    console.log("Please input a valid ID")
+  }
+
+
+/*
 
   if (Number.isInteger(todoId)) {
+
+
 
 
     let newArray = [];
@@ -101,13 +148,13 @@ function removeToDoItem(todoId) {
   
   }
   else {
-    console.log("Please use a number");
+    console.log("Please use a valid ID");
   }
   
 
 
 
-
+*/
 }
 
 // Function to mark a task as completed
