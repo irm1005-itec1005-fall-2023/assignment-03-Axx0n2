@@ -62,12 +62,12 @@ function addToDoItem(text) {
     w[0] = w[0]+1;
     let isCompleted = false;
       
-    let ID = w;
+    let ID = w[0];
 
     //let ID = Math.floor(Math.random()*9999);
       for (let i = 0 ; i < todoItems.length ; i++) {
         if (todoItems[i].id == ID) {
-          ID = Math.floor(Math.random()*9999);
+          //ID = Math.floor(Math.random()*9999);
           /*if (todoItems[i].id == ID) {
             addToDoItem(text);
           }*/
