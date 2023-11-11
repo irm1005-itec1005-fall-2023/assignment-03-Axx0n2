@@ -62,17 +62,13 @@ function addToDoItem(text) {
     w[0] = w[0]+1;
     let isCompleted = false;
       
-    ID = w;
-    //A note on this section of code
-    //This was my original solution to the ID issue, however I decided to go with another option
-    //as this method, while vaild, in theory could produce duplicat ID's
-    //as while if an ID can up initally that was a duplicate, there is nothing stopping it from setting the new ID to another pre-existing entry
-    //or even back to the same ID it just had
-    /*let ID = Math.floor(Math.random()*9999);
+    let ID = w;
+
+    //let ID = Math.floor(Math.random()*9999);
       for (let i = 0 ; i < todoItems.length ; i++) {
         if (todoItems[i].id == ID) {
           ID = Math.floor(Math.random()*9999);
-          if (todoItems[i].id == ID) {
+          /*if (todoItems[i].id == ID) {
             addToDoItem(text);
           }*/
           //maybe add, see if it works later
