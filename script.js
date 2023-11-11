@@ -46,8 +46,8 @@
 // Initialise an empty array with the variable name todoItems
 
 let todoItems = [];
-const d = new Date();
-let ID = (d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds());
+let w = [0];
+
 
 // Function to add a todo to the list
 // It should accept a string as a parameter (text of the todo item)
@@ -59,20 +59,24 @@ function addToDoItem(text) {
 
   if (typeof text == "string") {
     console.log("thankyou for inputing a string");
-  
+    w[0] = w[0]+1;
     let isCompleted = false;
       
-
-
-    let ID = Math.floor(Math.random()*999);
+    ID = w;
+    //A note on this section of code
+    //This was my original solution to the ID issue, however I decided to go with another option
+    //as this method, while vaild, in theory could produce duplicat ID's
+    //as while if an ID can up initally that was a duplicate, there is nothing stopping it from setting the new ID to another pre-existing entry
+    //or even back to the same ID it just had
+    /*let ID = Math.floor(Math.random()*9999);
       for (let i = 0 ; i < todoItems.length ; i++) {
         if (todoItems[i].id == ID) {
-          ID = Math.floor(Math.random()*999);
-          x = 1;
-        }
-  
-        else {
-          x = 0;
+          ID = Math.floor(Math.random()*9999);
+          if (todoItems[i].id == ID) {
+            addToDoItem(text);
+          }*/
+          //maybe add, see if it works later
+          
         }
       }
     
@@ -194,8 +198,31 @@ function markToDoItemAsCompleted(todoId) {
 function deleteToDoItem(todoId) {
   // Implement the logic to remove a task here
 
+  if (Number.isInteger(todoId)) {
+    if (todoId > 0) {
+      console.log("good ID");
+      let newArray = [];
+      for (let i = 0 ; i < todoItems.length ; i++) {
+        if (todoItems[i].id == todoId) {
+          //todoItems[i].text = null; 
+          console.log("removed");
+        }
+        else {
+          newArray.push(todoItems[i]);
+        }
+        
+      }
+      todoItems = newArray;
 
+    }
+    
+  } 
+  else {
+    console.log("Please input a valid ID")
+  }
+//5 does not work
 
+/*
   if (Number.isInteger(todoId)) {
 
     console.log("removed")
@@ -217,7 +244,7 @@ function deleteToDoItem(todoId) {
   else {
     console.log("Please use a number");
   }
-
+*/
 
 }
 
